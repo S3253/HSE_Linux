@@ -1,11 +1,12 @@
-# import os
+import os
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 from urllib.parse import urljoin
-# os.mkdir('data1')
+
+os.mkdir('data')
 
 url1 = str(input('Введите url сайта: ')) # 'https://habr.com/ru/'
-url_deep = int(input('Введите глубину обхода: '))
+url_deep = int(input('Введите глубину обхода: ')) # 2
 finish = set()
 
 
@@ -50,7 +51,7 @@ try:
             text.close()
 
         for index, item in enumerate(end):
-            with open(f'data1/{index + 1}.html', 'w') as site:
+            with open(f'data/{index + 1}.html', 'w') as site:
                 site.write(f"{BeautifulSoup(urlopen(Request(item)), 'lxml')}\n")
             site.close()
 except TypeError:
